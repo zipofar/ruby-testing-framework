@@ -1,4 +1,4 @@
 Start test
 ```bash
-ruby -I./ -I./lib ./test.rb
+ruby -I./lib ./test.rb
 ```

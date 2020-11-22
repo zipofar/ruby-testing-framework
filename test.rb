@@ -1,11 +1,18 @@
 require "minitest"
-require "meme"
 
 class TestMeme < MiniTest::Test
   def test_foo
-    meme = Meme.new
-    result = meme.plus(1, 3)
-    assert 4, result
+    assert 1, 1
+    assert 0, 0
+  end
+
+  def test_bar
+    assert 1, 1
+  end
+
+  def test_fiz
+    assert 1, 0
+    assert 1, 1
   end
 end
 
