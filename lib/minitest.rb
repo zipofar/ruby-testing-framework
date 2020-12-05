@@ -1,5 +1,3 @@
-require 'pry-nav'
-
 module MiniTest
   def self.autorun
     at_exit {
