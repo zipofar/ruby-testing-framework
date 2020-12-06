@@ -1,6 +1,6 @@
-require "minitest"
+require "jinitest"
 
-class FooTest < MiniTest::Test
+class Ex1Test < JiniTest::Test
   setup do
     @name = 'JO'
   end

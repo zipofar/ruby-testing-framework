@@ -1,11 +1,9 @@
-require 'byebug'
-
-module MiniTest
+module JiniTest
   MAKE_SETUP = :make_setup
 
   def self.autorun
     at_exit {
-      MiniTest.run
+      JiniTest.run
     }
   end
 
@@ -114,7 +112,7 @@ module MiniTest
     @@runnables = []
 
     def self.setup(&block)
-      define_method(MiniTest::MAKE_SETUP, &block)
+      define_method(JiniTest::MAKE_SETUP, &block)
     end
 
     def initialize(method_name, reporter)
@@ -149,11 +147,11 @@ module MiniTest
     def self.run(reporter)
       test_methods = self.runnable_methods
       test_methods.each do |method_name|
-        MiniTest.run_method(self, method_name, reporter)
+        JiniTest.run_method(self, method_name, reporter)
       end
     end
   end
 end
 
-MiniTest.autorun
+JiniTest.autorun
 

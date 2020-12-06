@@ -1,6 +1,6 @@
-require "minitest"
+require "jinitest"
 
-class TestMeme < MiniTest::Test
+class Ex2Test < JiniTest::Test
   def test_foo
     assert 1, 1
     assert 0, 0
