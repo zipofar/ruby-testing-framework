@@ -1,4 +1,8 @@
+require 'byebug'
+
 module MiniTest
+  MAKE_SETUP = :make_setup
+
   def self.autorun
     at_exit {
       MiniTest.run
@@ -16,7 +20,9 @@ module MiniTest
   def self.run_method(klass, method_name, reporter)
     reporter.inc_runs
     begin
-      klass.new(method_name, reporter).run
+      instance = klass.new(method_name, reporter)
+      instance.send(MAKE_SETUP) if instance.respond_to? MAKE_SETUP
+      instance.run
       reporter.render_test_ok
     rescue TestError => e
       reporter.add_failure(e)
@@ -106,6 +112,10 @@ module MiniTest
 
   class Test
     @@runnables = []
+
+    def self.setup(&block)
+      define_method(MiniTest::MAKE_SETUP, &block)
+    end
 
     def initialize(method_name, reporter)
       @method_name = method_name

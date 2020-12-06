@@ -1,18 +1,18 @@
 require "minitest"
 
 class FooTest < MiniTest::Test
+  setup do
+    @name = 'JO'
+  end
+
   def test_foo
-    assert 1, 1
+    @name = 'AGO'
+    assert @name, 'AGO'
     assert 0, 0
   end
 
   def test_bar
-    assert 1, 1
-  end
-
-  def test_fiz
-    assert 1, 0
-    assert 1, 1
+    assert @name, 'JO'
   end
 end
 
